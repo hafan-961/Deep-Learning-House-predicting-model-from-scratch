@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hafan-Homes Predictor - Cosmic Edition</title>
+    <!-- Google Fonts: Poppins and Orbitron -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Link to your external CSS file -->
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <!-- Canvas for the animated starfield background -->
+    <canvas id="stars-canvas"></canvas>
+
+    <div class="content-wrapper">
+        <header class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <i class="fas fa-home"></i> Hafan-Homes
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#predictor">Predictor</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero-section">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Unlock Your Home's True Value</h1>
+                        <p>Predict the price of your dream home with our advanced deep learning model. Input key features and get an instant, accurate estimate powered by  intelligence build by Hafan.</p>
+                        <button class="btn primary-btn scroll-to-predictor">Get Started</button>
+                    </div>
+                    <div class="hero-3d-container">
+                        <div class="hero-3d-placeholder">
+                            <i class="fas fa-home"></i>
+                            <p>hafan's Intelligence</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="predictor" class="predictor-section">
+                <div class="container">
+                    <h2>House Price Prediction</h2>
+                    <p class="section-description">Enter the details of the house to get an estimated price from AI.</p>
+
+                    <form id="predictionForm" class="prediction-form">
+                        <div class="form-grid">
+                            <!-- All 13 input fields -->
+                            <div class="form-group">
+                                <label for="area"><i class="fas fa-ruler-combined"></i> Area (sq ft)</label>
+                                <input type="number" id="area" name="area" placeholder="e.g., 1500" required min="100">
+                            </div>
+                            <div class="form-group">
+                                <label for="bedrooms"><i class="fas fa-bed"></i> No. of Bedrooms</label>
+                                <input type="number" id="bedrooms" name="bedrooms" placeholder="e.g., 3" required min="1" max="10">
+                            </div>
+                            <div class="form-group">
+                                <label for="bathrooms"><i class="fas fa-bath"></i> No. of Bathrooms</label>
+                                <input type="number" id="bathrooms" name="bathrooms" placeholder="e.g., 2" required min="1" max="5" step="0.5">
+                            </div>
+                            <div class="form-group">
+                                <label for="stories"><i class="fas fa-building"></i> Stories</label>
+                                <input type="number" id="stories" name="stories" placeholder="e.g., 2" required min="1" max="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="mainroad"><i class="fas fa-road"></i> Main Road Access</label>
+                                <select id="mainroad" name="mainroad" required>
+                                    <option value="">Select...</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="guestroom"><i class="fas fa-couch"></i> Guest Room</label>
+                                <select id="guestroom" name="guestroom" required>
+                                    <option value="">Select...</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="basement"><i class="fas fa-warehouse"></i> Basement</label>
+                                <select id="basement" name="basement" required>
+                                    <option value="">Select...</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="hotwater"><i class="fas fa-water"></i> Hot Water Heating</label>
+                                <select id="hotwater" name="hotwater" required>
+                                    <option value="">Select...</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label for="heating"><i class="fas fa-fire"></i> Heating System</label>
+                                <select id="heating" name="heating" required>
+                                    <option value="">Select...</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div> -->
+                            <div class="form-group">
+                                <label for="ac"><i class="fas fa-snowflake"></i> Air Conditioning</label>
+                                <select id="ac" name="ac" required>
+                                    <option value="">Select...</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="parking"><i class="fas fa-car"></i> Parking Spaces</label>
+                                <input type="number" id="parking" name="parking" placeholder="e.g., 1" required min="0" max="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="furnishing"><i class="fas fa-chair"></i> Furnishing Status</label>
+                                <select id="furnishing" name="furnishing" required>
+                                    <option value="">Select...</option>
+                                    <option value="furnished">Furnished</option>
+                                    <option value="semi-furnished">Semi-Furnished</option>
+                                    <option value="unfurnished">Unfurnished</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="prefarea"><i class="fas fa-map-marker-alt"></i> Preferred Area</label>
+                                <select id="prefarea" name="prefarea" required>
+                                    <option value="">Select...</option>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn predict-btn">Predict Price</button>
+                    </form>
+
+                    <div id="predictionResult" class="prediction-result-card hidden">
+                        <h3>Predicted House Price:</h3>
+                        <p class="result-price"><span id="predictedPrice">--</span></p>
+                        <p class="result-disclaimer">This is an estimated price based on the provided features and our model. Actual market prices may vary.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="about-section">
+                <div class="container">
+                    <h2>About Hafan-Homes Predictor</h2>
+                    <p>Our platform leverages state-of-the-art deep learning algorithms with two  hidden layers to provide highly accurate house price predictions. By analyzing a comprehensive set of features, we aim to empower buyers and sellers with valuable insights into the real estate market.</p>
+                    <p>We believe in transparency and continuous improvement. Our model is regularly updated and refined to reflect current market trends and data.</p>
+                </div>
+            </section>
+
+            <section id="contact" class="contact-section">
+                <div class="container">
+                    <h2>Contact Me </h2>
+                    <p>Want to connect to build some amazing DL models? Reach out to me!</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> muhammedhafan961@gmail.com</p>
+                        <p><i class="fas fa-phone"></i>9745143666</p>
+                        <p><i class="fas fa-map-marker-alt"></i>Kerala , India</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <div class="container">
+                <p>&copy; 2025  Hafan-Homes. All rights reserved.</p>
+                
+                <div class="social-links">
+                    <a href="https://github.com/hafan-961" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/muhammed-hafan-331391323/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/h4f_4n/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Link to your external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
