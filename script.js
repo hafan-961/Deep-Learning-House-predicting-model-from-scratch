@@ -316,12 +316,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                 console.log("Predicted Price:", predictedPrice);
 
                 // Format the price
-                const formattedPrice = new Intl.NumberFormat('en-US', {
+                
+                const formattedPrice = new Intl.NumberFormat('en-IN', { // Changed locale to 'en-IN'
                     style: 'currency',
-                    currency: 'USD',
+                    currency: 'INR', // Changed currency to 'INR'
                     minimumFractionDigits: 0,
                     maximumFractionDigits: 0
                 }).format(Math.abs(predictedPrice));
+                
 
                 // Display result
                 if (predictedPriceSpan) {
